@@ -7,9 +7,9 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 public class BotApplication {
 
     public static void main(String[] args) {
-//        SpringApplication.run(BotApplication.class, args);
         new SpringApplicationBuilder(BotApplication.class)
-                .properties("spring.config.location=classpath*:/bot-private.yml")
+                .properties("spring.config.location=classpath:application.yml," +
+                        "classpath:/private-config/bot-private.yml")
                 .run(args);
     }
 

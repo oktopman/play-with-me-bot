@@ -12,7 +12,7 @@ public class BotController {
 
     private final NoticeService noticeService;
 
-    @PostMapping
+    @PostMapping("/call")
     public String testBot() {
         Notice notice = new Notice();
         notice.setText("Hello World !");
