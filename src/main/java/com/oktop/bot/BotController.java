@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
 import java.util.Map;
 
 @RestController
@@ -14,6 +15,7 @@ import java.util.Map;
 public class BotController {
 
     private final NoticeService noticeService;
+//    private final WeatherService weatherService;
 
     @PostMapping("/webhook")
     public String webhook() {
@@ -23,10 +25,11 @@ public class BotController {
         return "success";
     }
 
-    @PostMapping("event")
-    public String interactivity(@RequestBody Map<String, Object> event) {
-        System.out.println(event.toString());
-        String challenge = (String) event.get("challenge");
-        return challenge;
+    @PostMapping("/event")
+    public void interactivity(@RequestBody EventVo vo) {
+        String text = (String) vo.getEvent().get("text");
+        if (text.contains("날씨")) {
+//            weatherService.send(vo);
+        }
     }
 }
